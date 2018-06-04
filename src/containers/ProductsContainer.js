@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import ProductList from '../components/ProductList'
 
-const ProductsContainer = props => <div>{props.products[0].title}</div>
+const ProductsContainer = props => <ProductList {...props} />
 
 const mapStateToProps = state => ({
   products: state.products
