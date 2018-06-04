@@ -1,3 +1,10 @@
 import React from 'react'
-const ProductsContainer = props => <div>ProductsContainer</div>
-export default ProductsContainer
+import { connect } from 'react-redux'
+
+const ProductsContainer = props => <div>{props.products[0].title}</div>
+
+const mapStateToProps = state => ({
+  products: state.products
+})
+
+export default connect(mapStateToProps)(ProductsContainer)
