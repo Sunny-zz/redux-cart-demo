@@ -10,6 +10,12 @@ const initialState = [
     title: '一加 6',
     price: 3299,
     inventory: 5
+  },
+  {
+    id: '235',
+    title: '一加 6',
+    price: 3299,
+    inventory: 5
   }
 ]
 const products = (state = initialState, action) => {

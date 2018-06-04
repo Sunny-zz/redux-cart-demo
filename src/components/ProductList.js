@@ -11,10 +11,13 @@ class ProductList extends Component {
         <span>{product.title}</span>
         <span> - </span>
         <span>${product.price}</span>
-        <span> x {product.inventory}</span>
+        {product.inventory ? <span> x {product.inventory}</span> : ''}
         <div>
-          <button onClick={() => this.handelClick(product.id)}>
-            add to cart
+          <button
+            onClick={() => this.handelClick(product.id)}
+            disabled={!Boolean(product.inventory)}
+          >
+            {product.inventory ? 'add to cart' : 'sold out'}
           </button>
         </div>
       </div>

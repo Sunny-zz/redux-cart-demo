@@ -1,3 +1,11 @@
 import React from 'react'
-const CartContainer = props => <div>CartContainer</div>
-export default CartContainer
+import Cart from '../components/Cart'
+import { addToCart } from '../actions'
+import { connect } from 'react-redux'
+const CartContainer = props => <Cart {...props} />
+const mapStateToProps = state => ({
+  cart: state.cart,
+  products: state.products
+})
+
+export default connect(mapStateToProps, { addToCart })(CartContainer)
