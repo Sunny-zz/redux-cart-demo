@@ -13,6 +13,17 @@ const initialState = [
   }
 ]
 const products = (state = initialState, action) => {
-  return state
+  switch (action.type) {
+    case 'ADD_TO_CART':
+      const newState = state.map(t => {
+        if (t.id === action.id && t.inventory > 0) {
+          t.inventory--
+        }
+        return t
+      })
+      return newState
+    default:
+      return state
+  }
 }
 export default products

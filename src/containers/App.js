@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { createStore } from 'redux'
 import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
 class App extends Component {
