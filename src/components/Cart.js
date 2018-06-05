@@ -1,30 +1,24 @@
 import React, { Component } from 'react'
-
+import { getProductsById, getTotal, getCartProducts } from '../selectors'
 class Cart extends Component {
   render() {
     const { cart, products } = this.props
-    const productsObj = products.reduce((obj, t) => {
-      obj[t.id] = t
-      return obj
-    }, {})
     const hasProduct = Boolean(cart.addId.length)
+    const productsObj = getProductsById(products)
+    const cartProducts = getCartProducts(cart, products)
     const cartList = hasProduct ? (
-      cart.addId.map(t => (
+      cartProducts.map(t => (
         <div key={t} style={{ margin: '20px 0' }}>
-          <span>{productsObj[t].title}</span>
+          <span>{t.title}</span>
           <span> - </span>
-          <span>${productsObj[t].price.toFixed(2)}</span>
-          <span> x {cart.quantityById[t]}</span>
+          <span>${t.price.toFixed(2)}</span>
+          <span> x {cart.quantityById[t.id]}</span>
         </div>
       ))
     ) : (
       <div>Please add some products to cart.</div>
     )
-    const total = hasProduct
-      ? cart.addId.reduce((total, t) => {
-          return total + productsObj[t].price * cart.quantityById[t]
-        }, 0)
-      : 0
+    const total = hasProduct ? getTotal(cart, products) : 0
     return (
       <div style={{ margin: '20px' }}>
         {cartList}
