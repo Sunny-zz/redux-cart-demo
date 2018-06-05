@@ -10,7 +10,7 @@ class ProductList extends Component {
       <div key={product.id} style={{ margin: '20px' }}>
         <span>{product.title}</span>
         <span> - </span>
-        <span>${product.price}</span>
+        <span>${product.price.toFixed(2)}</span>
         {product.inventory ? <span> x {product.inventory}</span> : ''}
         <div>
           <button

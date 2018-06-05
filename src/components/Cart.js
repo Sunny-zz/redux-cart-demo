@@ -7,19 +7,31 @@ class Cart extends Component {
       obj[t.id] = t
       return obj
     }, {})
-    const cartList = cart.addId.length ? (
+    const hasProduct = Boolean(cart.addId.length)
+    const cartList = hasProduct ? (
       cart.addId.map(t => (
-        <div key={t} style={{ margin: '20px' }}>
+        <div key={t} style={{ margin: '20px 0' }}>
           <span>{productsObj[t].title}</span>
           <span> - </span>
-          <span>${productsObj[t].price}</span>
+          <span>${productsObj[t].price.toFixed(2)}</span>
           <span> x {cart.quantityById[t]}</span>
         </div>
       ))
     ) : (
-      <div style={{ margin: '20px' }}>Please add some products to cart.</div>
+      <div>Please add some products to cart.</div>
     )
-    return <div>{cartList}</div>
+    const total = hasProduct
+      ? cart.addId.reduce((total, t) => {
+          return total + productsObj[t].price * cart.quantityById[t]
+        }, 0)
+      : 0
+    return (
+      <div style={{ margin: '20px' }}>
+        {cartList}
+        <div>Total: ${total.toFixed(2)}</div>
+        <button disabled={!hasProduct}>Checkout</button>
+      </div>
+    )
   }
 }
 
