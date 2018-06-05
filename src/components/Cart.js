@@ -9,14 +9,15 @@ class Cart extends Component {
     }, {})
     const cartList = cart.addId.length ? (
       cart.addId.map(t => (
-        <div key={t}>
+        <div key={t} style={{ margin: '20px' }}>
           <span>{productsObj[t].title}</span>
           <span> - </span>
           <span>${productsObj[t].price}</span>
+          <span> x {cart.quantityById[t]}</span>
         </div>
       ))
     ) : (
-      <div>Please add some products to cart.</div>
+      <div style={{ margin: '20px' }}>Please add some products to cart.</div>
     )
     return <div>{cartList}</div>
   }
