@@ -1,6 +1,5 @@
 const initialState = {
-  addId: [],
-  quantityById: {}
+  addId: []
 }
 
 const cart = (state = initialState, action) => {
