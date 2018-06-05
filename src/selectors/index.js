@@ -4,7 +4,7 @@ export const getProductsById = products =>
     return obj
   }, {})
 
-//通过 cart store 内的 addId 属性 在 getProductsById 对象中获取 商品数组
+//通过 cart 的 addId 属性 在 getProductsById 对象中获取 商品数组
 export const getCartProducts = (cart, products) =>
   cart.addId.map(t => getProductsById(products)[t])
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { getProductsById, getTotal, getCartProducts } from '../selectors'
 class Cart extends Component {
+  hanelClick = () => {
+    this.props.checkOut()
+  }
   render() {
     const { cart, products } = this.props
     const hasProduct = Boolean(cart.addId.length)
@@ -23,7 +26,9 @@ class Cart extends Component {
       <div style={{ margin: '20px' }}>
         {cartList}
         <div>Total: ${total.toFixed(2)}</div>
-        <button disabled={!hasProduct}>Checkout</button>
+        <button onClick={this.hanelClick} disabled={!hasProduct}>
+          Checkout
+        </button>
       </div>
     )
   }

@@ -30,6 +30,8 @@ const addId = (state = [], action) => {
         newState.push(id)
       }
       return newState
+    case 'CHECKOUT_CART':
+      return []
     default:
       return state
   }
@@ -38,10 +40,9 @@ const quantityById = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
       const { id } = action
-      return {
-        ...state,
-        [id]: { ...state }[id] + 1 || 1
-      }
+      return { ...state, [id]: { ...state }[id] + 1 || 1 }
+    case 'CHECKOUT_CART':
+      return {}
     default:
       return state
   }

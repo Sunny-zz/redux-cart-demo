@@ -1,6 +1,6 @@
 import React from 'react'
 import Cart from '../components/Cart'
-import { addToCart } from '../actions'
+import { addToCart, checkOut } from '../actions'
 import { connect } from 'react-redux'
 const CartContainer = props => <Cart {...props} />
 const mapStateToProps = state => ({
@@ -8,4 +8,4 @@ const mapStateToProps = state => ({
   products: state.products
 })
 
-export default connect(mapStateToProps, { addToCart })(CartContainer)
+export default connect(mapStateToProps, { addToCart, checkOut })(CartContainer)
